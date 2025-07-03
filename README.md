@@ -84,7 +84,7 @@ This project is open-source and free to use under the **MIT License**.
 
 **Alaa Ali**  
 📧 [alaaanoh83@gmail.com]  
-🔗 [[LinkedIn Profile](https://www.linkedin.com/in/alaa-ali-9125882b7?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)](#) 
+🔗 [[LinkedIn Profile](https://www.linkedin.com/in/alaa-ali-9125882b7?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)]
 
 ---
 
