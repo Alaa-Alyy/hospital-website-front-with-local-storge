@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Careers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        body {
+            background-color: #D6C8A5;
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 80px 20px 60px;
+            background: linear-gradient(rgba(214, 200, 165, 0.9), rgba(214, 200, 165, 0.9)), url('hospital-bg.jpg') center/cover;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            color: #555;
+            margin-bottom: 30px;
+        }
+        
+        .search-bar {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .search-bar input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+        }
+        
+        .search-bar button {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            background-color: #4a4a4a;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .search-bar button:hover {
+            background-color: #333;
+        }
+        
+        .jobs-section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 32px;
+            color: #333;
+        }
+        
+        .jobs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 20px;
+        }
+        
+        .job-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .job-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .job-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .job-department {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .job-type {
+            display: inline-block;
+            padding: 5px 15px;
+            background-color: #D6C8A5;
+            border-radius: 15px;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .job-description {
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        .apply-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4a4a4a;
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .apply-btn:hover {
+            background-color: #333;
+        }
+        /* Application Modal */
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .application-form {
+            display: grid;
+            gap: 20px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .form-group label {
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .submit-btn {
+            padding: 12px 25px;
+            background-color: #4a4a4a;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: #333;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            .hero p {
+                font-size: 18px;
+            }
+            .search-bar {
+                flex-direction: column;
+            }
+            .search-bar input,
+            .search-bar button {
+                width: 100%;
+            }
+        }
+        
+        .back-home-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            padding: 12px 25px;
+            background-color: #4a4a4a;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: background-color 0.3s;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .back-home-btn:hover {
+            background-color: #333;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body>
+    <section class="hero">
+        <div class="container">
+            <h1>Join Our Team</h1>
+            <p>Be part of our mission to provide exceptional healthcare</p>
+            <div class="search-bar">
+                <input type="text" placeholder="Search for jobs..." id="searchInput">
+                <button onclick="searchJobs()">Search</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add the back button here, outside of any section -->
+    <a href="IT(main)/index.html" class="back-home-btn">Back to Home</a>
+
+    <section class="jobs-section">
+        <div class="container">
+            <h2 class="section-title">Current Openings</h2>
+            <div class="jobs-grid" id="jobsGrid">
+                <!-- Jobs will be dynamically added here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Modal -->
+    <div class="modal" id="applicationModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Apply for <span id="modalJobTitle"></span></h2>
+                <button class="close-modal" onclick="closeModal()">&times;</button>
+            </div>
+            <form class="application-form" id="applicationForm" onsubmit="submitApplication(event)">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="experience">Years of Experience</label>
+                    <input type="number" id="experience" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="resume">Resume/CV</label>
+                    <input type="file" id="resume" accept=".pdf,.doc,.docx" required>
+                </div>
+                <div class="form-group">
+                    <label for="coverLetter">Cover Letter</label>
+                    <textarea id="coverLetter" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit Application</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Sample job listings data
+        const jobs = [{
+            title: "Senior Cardiologist",
+            department: "Cardiology Department",
+            type: "Full-time",
+            description: "Seeking an experienced cardiologist to join our growing team. Must have 5+ years of experience in diagnostic and interventional cardiology."
+        }, {
+            title: "Registered Nurse",
+            department: "Emergency Department",
+            type: "Full-time",
+            description: "Looking for dedicated RNs to provide patient care in our fast-paced emergency department. Night shifts available."
+        }, {
+            title: "Pediatrician",
+            department: "Pediatrics",
+            type: "Part-time",
+            description: "Join our child-friendly pediatrics team. Focus on preventive care and treating common childhood illnesses."
+        }, {
+            title: "Medical Laboratory Technician",
+            department: "Laboratory Services",
+            type: "Full-time",
+            description: "Perform laboratory tests and procedures. Must have experience with modern lab equipment and techniques."
+        }, {
+            title: "Physical Therapist",
+            department: "Rehabilitation",
+            type: "Full-time",
+            description: "Help patients recover and improve their mobility through therapeutic exercises and treatments."
+        }, {
+            title: "Pharmacist",
+            department: "Pharmacy",
+            type: "Full-time",
+            description: "Manage and dispense medications, provide consultation to patients and healthcare providers."
+        }];
+
+        // Function to display jobs
+        function displayJobs(jobsToShow = jobs) {
+            const jobsGrid = document.getElementById('jobsGrid');
+            jobsGrid.innerHTML = '';
+
+            jobsToShow.forEach((job, index) => {
+                const jobCard = document.createElement('div');
+                jobCard.className = 'job-card';
+                jobCard.innerHTML = `
+                    <h3 class="job-title">${job.title}</h3>
+                    <p class="job-department">${job.department}</p>
+                    <span class="job-type">${job.type}</span>
+                    <p class="job-description">${job.description}</p>
+                    <button class="apply-btn" onclick="openModal('${job.title}')">Apply Now</button>
+                `;
+                jobsGrid.appendChild(jobCard);
+            });
+        }
+
+        // Search functionality
+        function searchJobs() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const filteredJobs = jobs.filter(job =>
+                job.title.toLowerCase().includes(searchTerm) ||
+                job.department.toLowerCase().includes(searchTerm) ||
+                job.description.toLowerCase().includes(searchTerm)
+            );
+            displayJobs(filteredJobs);
+        }
+
+        // Modal functionality
+        function openModal(jobTitle) {
+            const modal = document.getElementById('applicationModal');
+            document.getElementById('modalJobTitle').textContent = jobTitle;
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('applicationModal');
+            modal.style.display = 'none';
+            document.getElementById('applicationForm').reset();
+        }
+
+        // Form submission
+        function submitApplication(event) {
+            event.preventDefault();
+
+            // Here you would typically send the form data to a server
+            alert('Application submitted successfully!');
+            closeModal();
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('applicationModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Initialize page with all jobs
+        displayJobs();
+    </script>
+</body>
+
+</html>
