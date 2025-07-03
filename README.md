@@ -4,11 +4,6 @@
 
 ---
 
-## 🌐 Live Demo
-> 🔗 [Insert your live demo link here]
-
----
-
 ## 📌 Project Overview
 
 This project aims to deliver an interactive hospital system where users can register, log in, search for doctors, book appointments and lab tests, explore services, and access their personal health profiles. Admins can manage doctors, view patients, respond to feedback, and publish articles — all through a clean, role-based interface.
@@ -88,8 +83,8 @@ This project is open-source and free to use under the **MIT License**.
 ## 🙋‍♀️ Author
 
 **Alaa Ali**  
-📧 [Your Email Here]  
-🔗 [LinkedIn Profile](#) | [GitHub](#)
+📧 [alaaanoh83@gmail.com]  
+🔗 [[LinkedIn Profile](https://www.linkedin.com/in/alaa-ali-9125882b7?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)](#) 
 
 ---
 
