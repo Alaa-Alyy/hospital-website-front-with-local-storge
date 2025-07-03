@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Health Blog & Articles</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Add this to the existing styles */
+        .back-home-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            padding: 12px 25px;
+            background-color: #2c3e50;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .back-home-btn:hover {
+            background-color: #34495e;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background">
+        <h1 class="main-title">Health Blog & Articles</h1>
+        <div class="tags-row">
+            <span class="tag active" data-tag="all">All</span>
+            <span class="tag" data-tag="#Immunity">#Immunity</span>
+            <span class="tag" data-tag="#Pediatrics">#Pediatrics</span>
+            <span class="tag" data-tag="#HealthyKids">#HealthyKids</span>
+            <span class="tag" data-tag="#StressRelief">#StressRelief</span>
+            <span class="tag" data-tag="#MentalHealth">#MentalHealth</span>
+            <span class="tag" data-tag="#Hydration">#Hydration</span>
+            <span class="tag" data-tag="#Wellness">#Wellness</span>
+            <span class="tag" data-tag="#HeartHealth">#HeartHealth</span>
+            <span class="tag" data-tag="#Cholesterol">#Cholesterol</span>
+            <span class="tag" data-tag="#Therapy">#Therapy</span>
+            <span class="tag" data-tag="#WomensHealth">#WomensHealth</span>
+            <span class="tag" data-tag="#Gynecology">#Gynecology</span>
+        </div>
+        <div class="cards-grid">
+            <!-- Card 1 -->
+            <div class="card" onclick="openPage('page1.html')">
+                <img src="images/8bd8cd664a367cbcdf181e89f52a29583c0a5f82.jpg" alt="Boost Immunity">
+                <div class="card-content">
+                    <h2>How to Boost Your Child's Immunity Naturally</h2>
+                    <div class="author">Author: Dr. Sarah Kamal</div>
+                    <div class="hashtags">#Immunity #Pediatrics #HealthyKids</div>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="card" onclick="openPage('page2.html')">
+                <img src="images/6f173f49abd071a37b043d887960866c92991a98.jpg" alt="Mental Burnout">
+                <div class="card-content">
+                    <h2>Understanding Mental Burnout: Signs & How to Recover</h2>
+                    <div class="author">Dr. Omar El Sherif</div>
+                    <div class="hashtags">#MentalHealth #StressRelief #BurnoutRecovery</div>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="card" onclick="openPage('page3.html')">
+                <img src="images/WhatsApp Image 2025-05-20 at 11.54.53 PM.jpeg" alt="Water Intake">
+                <div class="card-content">
+                    <h2>5 Signs You're Not Drinking Enough Water</h2>
+                    <div class="author">Dr. Salma Ezzat, Nutritionist & Wellness Coach</div>
+                    <div class="hashtags">#Hydration #Wellness #HealthTips</div>
+                </div>
+            </div>
+
+            <!-- Card 4 (جديد) -->
+            <div class="card" onclick="openPage('page4.html')">
+                <img src="images/WhatsApp Image 2025-05-20 at 11.59.26 PM.jpeg" alt="Cholesterol">
+                <div class="card-content">
+                    <h2>The Truth About Cholesterol</h2>
+                    <div class="author">Dr. Karim Nassar, Cardiologist, Heart & Vascular Center</div>
+                    <div class="hashtags">#HeartHealth #Cholesterol #Cardiology</div>
+                </div>
+            </div>
+
+            <!-- Card 5 (جديد) -->
+            <div class="card" onclick="openPage('page5.html')">
+                <img src="images/WhatsApp Image 2025-05-20 at 11.57.06 PM.jpeg" alt="Therapy">
+                <div class="card-content">
+                    <h2>Why Talking to a Therapist Isn't a Weakness</h2>
+                    <div class="author">Dr. Hala Youssef, Clinical Psychologist & Mental Health Advocate</div>
+                    <div class="hashtags">#MentalHealth #Therapy #Wellbeing</div>
+                </div>
+            </div>
+
+            <!-- Card 6 (جديد) -->
+            <div class="card" onclick="openPage('page6.html')">
+                <img src="images/WhatsApp Image 2025-05-20 at 11.58.18 PM.jpeg" alt="Gynecology">
+                <div class="card-content">
+                    <h2>What to Expect in Your First Gynecology Visit</h2>
+                    <div class="author">Dr. Rania El-Khatib, OB-GYN, Women's Health Specialist</div>
+                    <div class="hashtags">#WomensHealth #Gynecology #HealthCare</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="../IT(main)/index.html" class="back-home-btn">Back to Home</a>
+    <script>
+        function openPage(page) {
+            window.location.href = page;
+        }
+        // Hashtag filtering functionality
+        document.querySelectorAll('.tag').forEach(tag => {
+            tag.addEventListener('click', function() {
+                document.querySelectorAll('.tag').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                const selectedTag = this.getAttribute('data-tag');
+                document.querySelectorAll('.card').forEach(card => {
+                    const hashtags = card.querySelector('.hashtags').textContent;
+                    if (selectedTag === 'all') {
+                        card.style.display = 'flex';
+                    } else if (hashtags.includes(selectedTag)) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+
+    <!-- Chatbot HTML -->
+    <div class="chatbot-container">
+        <div class="chatbot-window" id="chatbotWindow">
+            <div class="chatbot-header">Health Assistant</div>
+            <div class="chatbot-messages" id="chatbotMessages">
+                <div class="message bot-message">Hello! I'm here to help with any questions about the topics on this blog.</div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chatbotInput" placeholder="Type your question...">
+                <button onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+        <button class="chatbot-button" onclick="toggleChatbot()">
+            <img src="images/Group 14 (4).png" alt="Chatbot" style="width:44px;height:44px;object-fit:contain;" />
+        </button>
+    </div>
+
+    <script>
+        // Chatbot functionality
+        function toggleChatbot() {
+            const chatbotWindow = document.getElementById('chatbotWindow');
+            chatbotWindow.style.display = chatbotWindow.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chatbotInput');
+            const messages = document.getElementById('chatbotMessages');
+            const userMessage = input.value.trim();
+            if (userMessage) {
+                messages.innerHTML += `<div class="message user-message">${userMessage}</div>`;
+                input.value = '';
+                // Custom bot responses for the homepage
+                let botResponse = "I can tell you more about topics like immunity, mental health, nutrition, cholesterol, therapy, and women's health. What would you like to know?";
+                if (userMessage.toLowerCase().includes('immunity')) {
+                    botResponse = "Check out the article about boosting child\'s immunity naturally for tips.";
+                } else if (userMessage.toLowerCase().includes('mental health') || userMessage.toLowerCase().includes('burnout') || userMessage.toLowerCase().includes('stress')) {
+                    botResponse = "We have articles on understanding mental burnout and the benefits of therapy.";
+                } else if (userMessage.toLowerCase().includes('nutrition') || userMessage.toLowerCase().includes('water') || userMessage.toLowerCase().includes('healthy eating')) {
+                    botResponse = "Find articles on healthy nutrition and signs you\'re not drinking enough water.";
+                } else if (userMessage.toLowerCase().includes('cholesterol') || userMessage.toLowerCase().includes('heart health')) {
+                    botResponse = "Read the article about the truth regarding cholesterol for more information.";
+                } else if (userMessage.toLowerCase().includes('therapy') || userMessage.toLowerCase().includes('therapist')) {
+                    botResponse = "Check out the article about why talking to a therapist isn\'t a weakness.";
+                } else if (userMessage.toLowerCase().includes('women\'s health') || userMessage.toLowerCase().includes('gynecology')) {
+                    botResponse = "We have an article covering what to expect in your first gynecology visit.";
+                }
+
+                setTimeout(() => {
+                    messages.innerHTML += `<div class="message bot-message">${botResponse}</div>`;
+                    messages.scrollTop = messages.scrollHeight;
+                }, 500);
+                messages.scrollTop = messages.scrollHeight;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const chatbotInput = document.getElementById('chatbotInput');
+            if (chatbotInput) {
+                chatbotInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        sendMessage();
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

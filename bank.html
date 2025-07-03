@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bank Transfer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container payment-page">
+    <div class="form-section">
+      <h1><img src="WhatsApp Image 2025-05-16 at 6.43.04 PM.jpeg" alt="Bank" class="icon"> Bank Transfer</h1>
+      <form id="bankForm">
+        <input type="text" id="bankName" placeholder="Name" required>
+        <input type="text" id="bankAccount" placeholder="Account Number" required>
+        <input type="text" id="bankAccountName" placeholder="Account Name" required>
+        <input type="text" id="bankIBAN" placeholder="IBAN" required>
+        <input type="text" id="bankSwift" placeholder="Swift Code" required>
+        <input type="text" id="bankService" placeholder="Your Service Number" required>
+        <button type="button" id="bank-pay-btn" class="pay-btn">Pay</button>
+        <a href="../IT(main)/index.html" class="back-btn">Back to Home</a>
+      </form>
+      <div class="receipt" id="bank-receipt">
+        <h2>Receipt</h2>
+      </div>
+      <p class="note small" id="bank-message" style="display: none;">
+        Thank you! We'll confirm your payment within 24 hours and send your appointment confirmation by SMS or email.
+      </p>
+    </div>
+    <div class="image-section">
+      <img src="Feds Announce Record Settlement With Bank Of America, Shareholders Breathe Sigh Of Relief 1.png" alt="Bank Building" class="side-img">
+    </div>
+  </div>
+  <!-- Chatbot HTML -->
+  <div class="chatbot-container">
+    <div class="chatbot-window" id="chatbotWindow">
+      <div class="chatbot-header">Hospital Assistant</div>
+      <div class="chatbot-messages" id="chatbotMessages">
+        <div class="message bot-message">Hello! I'm here to help with any questions about our hospital services and payments.</div>
+      </div>
+      <div class="chatbot-input">
+        <input type="text" id="chatbotInput" placeholder="Type your question...">
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+    <button class="chatbot-button" onclick="toggleChatbot()">
+      <img src="Group 13.png" alt="Chatbot" style="width:44px;height:44px;object-fit:contain;" />
+    </button>
+  </div>
+  <script src="main js.js"></script>
+</body>
+</html>

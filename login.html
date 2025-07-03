@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kovak Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Italiana&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="hospital-name">Kovak Medical Hospital</h1>
+        <form id="loginForm" class="login-form">
+            <input type="text" id="username" class="input" placeholder="Username" required>
+            <input type="password" id="password" class="input" placeholder="Password" required>
+            <button type="submit" class="btn">Login</button>
+            <a href="index.html" class="back-btn">Back to Home</a>
+        </form>
+    </div>
+    <!-- Chatbot HTML -->
+    <div class="chatbot-container">
+        <div class="chatbot-window hidden" id="chatbotWindow">
+            <div class="chatbot-header">Hospital Assistant</div>
+            <div class="chatbot-messages" id="chatbotMessages">
+                <div class="message bot-message">Hello! I'm here to help with any questions about our hospital services.</div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chatbotInput" placeholder="Type your question...">
+                <button onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+        <button class="chatbot-button" onclick="toggleChatbot()">
+            <img src="Group 13.png" alt="Chatbot" style="width:44px;height:44px;object-fit:contain;" />
+        </button>
+    </div>
+    <script src="script.js"></script>
+    <script src="notifications.js"></script>
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const usernameInput = document.getElementById("username").value;
+            const passwordInput = document.getElementById("password").value;
+
+            console.log("Login attempt - Username:", usernameInput);
+
+            // Check for admin
+            if (usernameInput === "admin" && passwordInput === "123456") {
+                localStorage.setItem("user", JSON.stringify({ username: "admin", role: "admin" }));
+                alert("Welcome Admin!");
+                window.location.href = "../../ADMIN PANNEL/index.html";
+                return;
+            }
+
+            // Check user in localStorage
+            const storedUser = JSON.parse(localStorage.getItem("registeredUser"));
+            console.log("Stored user data:", storedUser);
+
+            if (!storedUser) {
+                alert("No registered user found. Please register first.");
+                return;
+            }
+
+            console.log("Comparing credentials - Input:", { username: usernameInput, password: passwordInput });
+            console.log("Stored credentials:", { username: storedUser.username, password: storedUser.password });
+
+            if (usernameInput === storedUser.username && passwordInput === storedUser.password) {
+                localStorage.setItem("user", JSON.stringify({ username: storedUser.username, role: "user" }));
+                alert("Login successful!");
+                window.location.href = "../../IT(main)/index.html";
+            } else {
+                alert("Invalid username or password!");
+            }
+        });
+    </script>
+</body>
+</html> 

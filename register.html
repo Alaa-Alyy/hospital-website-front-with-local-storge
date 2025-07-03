@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kovak Registration</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Italiana&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="hospital-name">Kovak Medical Hospital</h1>
+        <form class="register-form">
+            <input type="text" class="input" placeholder="Username" required>
+            <input type="password" class="input" placeholder="New Password" required>
+            <div class="extra-inputs">
+                <input type="number" class="input" placeholder="Age" required min="0">
+                <input type="tel" class="input" placeholder="Phone Number" required pattern="[0-9]*" inputmode="numeric" title="Please enter numbers only">
+            </div>
+            <div class="gender-inputs">
+                <label style="min-width:70px;font-weight:600;color:#333;margin-right:18px;font-size:18px;">Gender</label>
+                <label class="quantum-radio">
+                    <input type="radio" name="gender" value="male" required>
+                    <span class="radio-control"></span>
+                    <span class="radio-label">Male</span>
+                </label>
+                <label class="quantum-radio">
+                    <input type="radio" name="gender" value="female">
+                    <span class="radio-control"></span>
+                    <span class="radio-label">Female</span>
+                </label>
+            </div>
+            <button type="submit" class="btn">Done</button>
+            <a href="index.html" class="back-btn">Back to Home</a>
+        </form>
+    </div>
+    <!-- Chatbot HTML -->
+    <div class="chatbot-container">
+        <div class="chatbot-window hidden" id="chatbotWindow">
+            <div class="chatbot-header">Hospital Assistant</div>
+            <div class="chatbot-messages" id="chatbotMessages">
+                <div class="message bot-message">Hello! I'm here to help with any questions about our hospital services.</div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chatbotInput" placeholder="Type your question...">
+                <button onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+        <button class="chatbot-button" onclick="toggleChatbot()">
+            <img src="Group 13.png" alt="Chatbot" style="width:44px;height:44px;object-fit:contain;" />
+        </button>
+    </div>
+    <script src="script.js"></script>
+    <script src="notifications.js"></script>
+    <script>
+        document.querySelector(".register-form").addEventListener("submit", function(e) {
+            e.preventDefault();
+            
+            const username = this.querySelector('input[placeholder="Username"]').value;
+            const password = this.querySelector('input[placeholder="New Password"]').value;
+            const age = this.querySelector('input[placeholder="Age"]').value;
+            const phone = this.querySelector('input[placeholder="Phone Number"]').value;
+            const gender = this.querySelector('input[name="gender"]:checked').value;
+
+            // Store user data in localStorage
+            const userData = {
+                username: username,
+                password: password,
+                age: age,
+                phone: phone,
+                gender: gender
+            };
+
+            console.log("Storing user data:", userData);
+            localStorage.setItem("registeredUser", JSON.stringify(userData));
+            
+            // Verify the data was stored correctly
+            const storedData = JSON.parse(localStorage.getItem("registeredUser"));
+            console.log("Verified stored data:", storedData);
+            
+            alert("Registration successful! You can now login.");
+            window.location.href = "login.html";
+        });
+    </script>
+</body>
+</html> 

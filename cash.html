@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cash Payment</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container payment-page">
+    <div class="form-section">
+      <h1><img src="dollars 1.png" alt="Cash" class="icon"> Cash</h1>
+      <form id="cashForm">
+        <input type="text" id="cashName" placeholder="Name" required>
+        <input type="text" id="cashPhone" placeholder="Phone Number" required>
+        <input type="text" id="cashService" placeholder="Your Service Number" required>
+        <button type="button" id="cash-pay-btn" class="pay-btn">Pay</button>
+        <a href="../IT(main)/index.html" class="back-btn">Back to Home</a>
+      </form>
+      <div class="receipt" id="cash-receipt">
+        <h2>Receipt</h2>
+      </div>
+      <p class="note small" id="cash-message" style="display: none;">
+        <span class="green">&#10003;</span> You have selected to pay in cash.<br>
+        Please bring this receipt on the day of your appointment and show them for validation of your receipt.
+      </p>
+    </div>
+    <div class="image-section">
+      <img src="image 10.png" alt="Receptionist" class="side-img">
+    </div>
+  </div>
+  <!-- Chatbot HTML -->
+  <div class="chatbot-container">
+    <div class="chatbot-window" id="chatbotWindow">
+      <div class="chatbot-header">Hospital Assistant</div>
+      <div class="chatbot-messages" id="chatbotMessages">
+        <div class="message bot-message">Hello! I'm here to help with any questions about our hospital services and payments.</div>
+      </div>
+      <div class="chatbot-input">
+        <input type="text" id="chatbotInput" placeholder="Type your question...">
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+    <button class="chatbot-button" onclick="toggleChatbot()">
+      <img src="Group 13.png" alt="Chatbot" style="width:44px;height:44px;object-fit:contain;" />
+    </button>
+  </div>
+  <script src="main js.js"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Card Payment</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container payment-page">
+    <div class="form-section">
+      <h1><img src="credit-card 1.png" alt="Card" class="icon"> Card</h1>
+      <form id="cardForm">
+        <input type="text" id="cardName" placeholder="Name on Card" required>
+        <input type="text" id="cardNumber" placeholder="Card Number" required>
+        <div class="card-details">
+          <input type="text" id="expiry" placeholder="MM/YY" required>
+          <input type="text" id="cvv" placeholder="CVV" required>
+        </div>
+        <input type="text" id="cardService" placeholder="Your Service Number" required>
+        <button type="button" id="card-pay-btn" class="pay-btn">Pay</button>
+        <a href="../IT(main)/index.html" class="back-btn">Back to Home</a>
+      </form>
+      <div class="receipt" id="card-receipt">
+        <h2>Receipt</h2>
+      </div>
+      <p class="note small" id="card-message" style="display: none;">
+        <span class="green">&#10003;</span> Payment confirmed! Your appointment is booked.<br>
+        You'll receive an email with your receipt.
+      </p>
+    </div>
+    <div class="image-section">
+      <img src="Premium Vector _ Hand holds smartphone with electronic receipt and credit bank card on screen 1.png" alt="Card Payment" class="side-img">
+    </div>
+  </div>
+  <!-- Chatbot HTML -->
+  <div class="chatbot-container">
+    <div class="chatbot-window" id="chatbotWindow">
+      <div class="chatbot-header">Hospital Assistant</div>
+      <div class="chatbot-messages" id="chatbotMessages">
+        <div class="message bot-message">Hello! I'm here to help with any questions about our hospital services and payments.</div>
+      </div>
+      <div class="chatbot-input">
+        <input type="text" id="chatbotInput" placeholder="Type your question...">
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+    <button class="chatbot-button" onclick="toggleChatbot()">
+      <img src="Group 13.png" alt="Chatbot" style="width:44px;height:44px;object-fit:contain;" />
+    </button>
+  </div>
+  <script src="main js.js"></script>
+</body>
+</html>

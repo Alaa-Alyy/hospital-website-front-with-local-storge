@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Insurance & Payment Options</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container main">
+    <h1>Insurance & Payment Options</h1>
+    <p class="subtitle">"We accept many insurance providers and offer flexible payment options to make healthcare easy for you."</p>
+    <section>
+      <h2>We Accept These Insurance Providers:</h2>
+      <div class="insurance-logos">
+        <img src="image 9.png" alt="MetLife">
+        <img src="image 4.png" alt="Allianz">
+        <img src="image 6.png" alt="Bupa">
+        <img src="image 5.png" alt="AXA">
+        <img src="image 8.png" alt="MedRight">
+        <img src="image 7.png" alt="NileCare">
+      </div>
+      <p class="note">Please bring your insurance card with you when you visit</p>
+    </section>
+    <section>
+      <h2>Payment Methods</h2>
+      <div class="payment-methods">
+        <a href="cash.html">
+          <img src="dollars 1.png" alt="Cash">
+          <span>Cash</span>
+        </a>
+        <a href="card.html">
+          <img src="credit-card 1.png" alt="Card">
+          <span>Card</span>
+        </a>
+        <a href="bank.html">
+          <img src="WhatsApp Image 2025-05-16 at 6.43.04 PM.jpeg" alt="Bank Transfer">
+          <span>Bank Transfer</span>
+        </a>
+      </div>
+    </section>
+  </div>
+  <!-- Chatbot HTML -->
+  <div class="chatbot-container">
+    <div class="chatbot-window" id="chatbotWindow">
+      <div class="chatbot-header">Hospital Assistant</div>
+      <div class="chatbot-messages" id="chatbotMessages">
+        <div class="message bot-message">Hello! I'm here to help with any questions about our hospital services and payments.</div>
+      </div>
+      <div class="chatbot-input">
+        <input type="text" id="chatbotInput" placeholder="Type your question...">
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+    <button class="chatbot-button" onclick="toggleChatbot()">
+      <img src="Group 13.png" alt="Chatbot" style="width:44px;height:44px;object-fit:contain;" />
+    </button>
+  </div>
+  <script src="main js.js"></script>
+</body>
+</html>
